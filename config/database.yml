@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: postgres
+  password: master
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: OrderAPI_development
+
+  
+ 
+test:
+  <<: *default
+  database: OrderAPI_test
+
+
+production:
+  <<: *default
+  database: OrderAPI_production
+  username: OrderAPI
+  password: <%= ENV['ORDERAPI_DATABASE_PASSWORD'] %>
